@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getClouds } from '../../actions/clouds';
 import { List } from 'semantic-ui-react'
 
 class CloudList extends Component {
-  componentDidMount() {
-    this.props.getClouds();
-  }
-
   render() {
     return (
       <List divided>
@@ -24,11 +18,4 @@ class CloudList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  clouds: Object.values(state.clouds)
-});
-
-export default connect(
-  mapStateToProps,
-  { getClouds }
-)(CloudList);
+export default CloudList;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
-import CloudList from './components/clouds/CloudList';
+import Clouds from './components/clouds/Clouds';
 import { Container, Header } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
@@ -10,7 +10,7 @@ function App() {
     <Provider store={store}>
       <Container>
         <Header as="h1">Aiven Cloud Selector</Header>
-        <CloudList />
+        <Clouds />
       </Container>
     </Provider>
   );
