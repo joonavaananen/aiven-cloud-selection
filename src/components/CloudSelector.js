@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import getClouds from '../../helpers/getClouds';
-import getProviders from '../../helpers/getProviders';
-import useGeoLocation from '../../helpers/useGeoLocation';
+import getClouds from '../helpers/getClouds';
+import getProviders from '../helpers/getProviders';
+import useGeoLocation from '../helpers/useGeoLocation';
 import { Container } from 'semantic-ui-react';
 import CloudList from './CloudList';
 import CloudForm from './CloudForm';
 
 /**
- * Handle cloud selector state, and render cloud form and cloud list components
+ * Handle cloud selector related states, and render cloud form and cloud list components
  */
 
 const CloudSelector = () => {

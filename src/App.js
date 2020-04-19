@@ -1,5 +1,5 @@
 import React from 'react';
-import CloudSelector from './components/clouds/CloudSelector';
+import CloudSelector from './components/CloudSelector';
 import { Container, Header } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 

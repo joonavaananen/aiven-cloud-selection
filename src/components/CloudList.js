@@ -8,7 +8,7 @@ import { Container, List, Message } from 'semantic-ui-react'
  * @param {string|boolean} error - Error message, or false if no error
  */
 
-const CloudList = ({ clouds, error }) => {
+const CloudList = ({ clouds, error = false }) => {
   return (
     <Container>
       {error &&
