@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import getClouds from '../../helpers/getClouds';
 import getProviders from '../../helpers/getProviders';
+import useGeoLocation from '../../helpers/useGeoLocation';
 import { Container } from 'semantic-ui-react';
 import CloudList from './CloudList';
 import CloudForm from './CloudForm';
@@ -8,6 +9,8 @@ import CloudForm from './CloudForm';
 const CloudSelector = () => {
   const [clouds, setClouds] = useState([]);
   const [providers, setProviders] = useState([]);
+  const [filters, setFilters] = useState({});
+  const { position, error } = useGeoLocation();
 
   useEffect(() => {
     getClouds().then(clouds => {
@@ -17,7 +20,11 @@ const CloudSelector = () => {
   }, []);
 
   const handleChange = ((event, data) => {
-    getClouds(data.value).then(clouds => {
+    const updatedFilters = { ...filters };
+    updatedFilters[data.name] = data.value;
+    setFilters(updatedFilters);
+
+    getClouds(updatedFilters, position).then(clouds => {
       setClouds(clouds);
     });
   });

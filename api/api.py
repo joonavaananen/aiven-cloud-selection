@@ -15,5 +15,7 @@ def get_clouds():
   if 'clouds' in response_dict:
     for cloud in response_dict['clouds']:
       cloud['cloud_provider'] = cloud['cloud_name'].split('-', 1)[0]
+      cloud['latitude'] = cloud.pop('geo_latitude')
+      cloud['longitude'] = cloud.pop('geo_longitude')
     
   return jsonify(response_dict)

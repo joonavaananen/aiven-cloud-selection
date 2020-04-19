@@ -1,4 +1,4 @@
-const cloudProviders = {
+const providerOptions = {
   azure : 'Azure',
   aws : 'Amazon Web Services',
   google : 'Google Cloud',
@@ -6,4 +6,4 @@ const cloudProviders = {
   upcloud : 'UpCloud'
 };
 
-export default cloudProviders;
+export default providerOptions;

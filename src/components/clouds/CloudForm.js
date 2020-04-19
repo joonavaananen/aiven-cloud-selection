@@ -1,15 +1,18 @@
 import React from 'react';
-import { Form, Dropdown } from 'semantic-ui-react'
-import cloudProviders from '../../data/cloud-providers';
+import { Form, Label, Dropdown } from 'semantic-ui-react'
+import providerOptions from '../../data/provider-options';
+import orderOptions from '../../data/order-options';
 
 const CloudForm = ({ providers, handleChange }) => {
-  const getFormattedProviders = () => {
-    return providers && providers.length
-      ? providers.map(provider => {
+  const orders = Object.keys(orderOptions);
+
+  const getFormattedOptions = (options, translations) => {
+    return options && options.length
+      ? options.map(option => {
         return {
-          key : provider,
-          text : cloudProviders[provider],
-          value : provider
+          key : option,
+          text : translations[option],
+          value : option
         };
       })
       : [];
@@ -17,18 +20,34 @@ const CloudForm = ({ providers, handleChange }) => {
 
   return (
     <Form>
-      <Form.Field>
-        <Dropdown
-          id='cloud-providers'
-          name='cloudProviders'
-          placeholder='Cloud Providers'
-          fluid
-          selection
-          multiple
-          options={getFormattedProviders()}
-          onChange={handleChange}
-        />
-      </Form.Field>
+      <Form.Group widths='equal'>
+        <Form.Field>
+          <Dropdown
+            id='cloud-providers'
+            name='providers'
+            placeholder='Cloud Providers'
+            fluid
+            selection
+            multiple
+            options={getFormattedOptions(providers, providerOptions)}
+            onChange={handleChange}
+          />
+          <Label pointing>Select Cloud Providers</Label>
+        </Form.Field>
+        <Form.Field>
+          <Dropdown
+            id='cloud-order'
+            name='order'
+            placeholder='List Order'
+            fluid
+            selection
+            options={getFormattedOptions(orders, orderOptions)}
+            defaultValue={orders[0]}
+            onChange={handleChange}
+          />
+          <Label pointing>Select List Order</Label>
+        </Form.Field>
+      </Form.Group>
     </Form>
   );
 }
