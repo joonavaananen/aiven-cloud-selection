@@ -2,6 +2,10 @@
 
 React, Python and Flask prototype web app to provide improved cloud selection logic.
 
+## Demo Video
+
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/KALaBmGr_vE/0.jpg)](https://www.youtube.com/watch?v=KALaBmGr_vE "Aiven Cloud Selector prototype")
+
 ## Installation
 
 To run the server, run the following command from project root:
