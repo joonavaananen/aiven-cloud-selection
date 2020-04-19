@@ -15,3 +15,7 @@ To run the React app, in a separate terminal window, run the following command f
 ```bash
 yarn start
 ```
+
+To use the app, then go to:
+
+http://localhost:3000/
