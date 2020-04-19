@@ -1,3 +1,7 @@
+/**
+ * Human-readable translations of cloud providers
+ */
+
 const providerOptions = {
   azure : 'Azure',
   aws : 'Amazon Web Services',

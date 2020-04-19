@@ -6,11 +6,19 @@ import { Container } from 'semantic-ui-react';
 import CloudList from './CloudList';
 import CloudForm from './CloudForm';
 
+/**
+ * Handle cloud selector state, and render cloud form and cloud list components
+ */
+
 const CloudSelector = () => {
   const [clouds, setClouds] = useState([]);
   const [providers, setProviders] = useState([]);
   const [filters, setFilters] = useState({});
   const { position, error } = useGeoLocation();
+
+  /**
+   * Get and set clouds and providers on mount
+   */
 
   useEffect(() => {
     getClouds().then(clouds => {
@@ -18,6 +26,13 @@ const CloudSelector = () => {
       setProviders(getProviders(clouds));
     });
   }, []);
+
+  /**
+   * Handle form (dropdown) changes, update filters and clouds
+   * 
+   * @param {Object} event - Contains info about event
+   * @param {Object} data - Contains info about triggering element
+   */
 
   const handleChange = ((event, data) => {
     const updatedFilters = { ...filters };
@@ -32,7 +47,7 @@ const CloudSelector = () => {
   return (
     <Container>
       <CloudForm providers={providers} handleChange={handleChange} />
-      <CloudList clouds={clouds} />
+      <CloudList clouds={clouds} error={error} />
     </Container>
   )
 }

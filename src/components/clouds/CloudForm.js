@@ -3,6 +3,13 @@ import { Form, Label, Dropdown } from 'semantic-ui-react'
 import providerOptions from '../../data/provider-options';
 import orderOptions from '../../data/order-options';
 
+/**
+ * Render cloud form
+ * 
+ * @param {Array} providers - Options to show in dropdown, to filter clouds by
+ * @param {callback} handleChange - Handle dropdown on change
+ */
+
 const CloudForm = ({ providers, handleChange }) => {
   const orders = Object.keys(orderOptions);
 
