@@ -1,50 +1,36 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getProviders } from '../../actions/providers';
+import React from 'react';
 import { Form, Dropdown } from 'semantic-ui-react'
-import cloudProviders from './cloud-providers';
+import cloudProviders from '../../data/cloud-providers';
 
-class CloudForm extends Component {
-  componentDidMount() {
-    this.props.getProviders();
-  }
-
-  getFormattedProviders() {
-    return this.props.providers && this.props.providers.length
-      ? this.props.providers.map(provider => {
+const CloudForm = ({ providers, handleChange }) => {
+  const getFormattedProviders = () => {
+    return providers && providers.length
+      ? providers.map(provider => {
         return {
-          key : provider.cloud_provider,
-          text : cloudProviders[provider.cloud_provider],
-          value : provider.cloud_provider
+          key : provider,
+          text : cloudProviders[provider],
+          value : provider
         };
       })
       : [];
-  }
+  };
 
-  render() {
-    return (
-      <Form>
-        <Form.Field>
-          <Dropdown
-            id='cloud-providers'
-            name='cloudProviders'
-            placeholder='Cloud Providers'
-            fluid
-            selection
-            options={this.getFormattedProviders()}
-            onChange={this.props.handleProviderChange}
-          />
-        </Form.Field>
-      </Form>
-    );
-  }
+  return (
+    <Form>
+      <Form.Field>
+        <Dropdown
+          id='cloud-providers'
+          name='cloudProviders'
+          placeholder='Cloud Providers'
+          fluid
+          selection
+          multiple
+          options={getFormattedProviders()}
+          onChange={handleChange}
+        />
+      </Form.Field>
+    </Form>
+  );
 }
 
-const mapStateToProps = state => ({
-  providers : state.providers
-});
-
-export default connect(
-  mapStateToProps,
-  { getProviders }
-)(CloudForm);
+export default CloudForm;

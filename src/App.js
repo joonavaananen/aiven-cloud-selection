@@ -1,18 +1,14 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from './store';
-import Clouds from './components/clouds/Clouds';
+import CloudSelector from './components/clouds/CloudSelector';
 import { Container, Header } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
-function App() {
+const App = () => {
   return (
-    <Provider store={store}>
-      <Container>
-        <Header as="h1">Aiven Cloud Selector</Header>
-        <Clouds />
-      </Container>
-    </Provider>
+    <Container style={{ padding : '2rem 0' }}>
+      <Header as="h1">Aiven Cloud Selector</Header>
+      <CloudSelector />
+    </Container>
   );
 }
 
